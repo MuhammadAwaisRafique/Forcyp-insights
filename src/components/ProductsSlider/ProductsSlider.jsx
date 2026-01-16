@@ -90,7 +90,19 @@ const ProductsSlider = () => {
                         <a className="button light outline" href={products[currentSlide].href}>
                           Learn More
                         </a>
-                        <button className="button light outline" type="button">
+                        <button 
+                          className="button light outline" 
+                          type="button"
+                          onClick={() => {
+                            const contactSection = document.getElementById('contact')
+                            if (contactSection) {
+                              contactSection.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                              })
+                            }
+                          }}
+                        >
                           Free Trial
                         </button>
                       </div>

@@ -12,10 +12,23 @@ import Footer from './components/Footer/Footer'
 import CookieBanner from './components/CookieBanner/CookieBanner'
 import ContactModal from './components/ContactModal/ContactModal'
 import TrialModal from './components/TrialModal/TrialModal'
+import PrivacyPolicyModal from './components/PrivacyPolicyModal/PrivacyPolicyModal'
 
 function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isTrialModalOpen, setIsTrialModalOpen] = useState(false)
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false)
+
+  // Function to scroll to contact section
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      })
+    }
+  }
 
   useEffect(() => {
     // Additional protection on component mount
@@ -67,7 +80,7 @@ function App() {
     <div className="app">
       <Header 
         onContactClick={() => setIsContactModalOpen(true)}
-        onTrialClick={() => setIsTrialModalOpen(true)}
+        onTrialClick={scrollToContact}
       />
       <main className="page-main">
         <Hero />
@@ -80,7 +93,8 @@ function App() {
       </main>
       <Footer 
         onContactClick={() => setIsContactModalOpen(true)}
-        onTrialClick={() => setIsTrialModalOpen(true)}
+        onTrialClick={scrollToContact}
+        onPrivacyClick={() => setIsPrivacyModalOpen(true)}
       />
       <CookieBanner />
       <ContactModal 
@@ -90,6 +104,10 @@ function App() {
       <TrialModal 
         isOpen={isTrialModalOpen}
         onClose={() => setIsTrialModalOpen(false)}
+      />
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen}
+        onClose={() => setIsPrivacyModalOpen(false)}
       />
     </div>
   )

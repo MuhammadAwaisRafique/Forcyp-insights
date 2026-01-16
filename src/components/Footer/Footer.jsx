@@ -2,7 +2,7 @@ import React from 'react'
 import './Footer.css'
 import logoImage from '../../assets/images/forcyp-logo.PNG'
 
-const Footer = ({ onContactClick, onTrialClick }) => {
+const Footer = ({ onContactClick, onTrialClick, onPrivacyClick }) => {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -108,7 +108,7 @@ const Footer = ({ onContactClick, onTrialClick }) => {
           <div className="footer-bottom">
             <div className="footer-bottom-content">
               <div className="footer-legal">
-                <a href="#privacy-policy">Privacy Policy</a>
+                <span onClick={onPrivacyClick} className="footer-link-clickable">Privacy Policy</span>
                 <span className="footer-separator">•</span>
                 <a href="#terms-of-service">Terms of Service</a>
                 <span className="footer-separator">•</span>
