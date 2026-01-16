@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="text-center">
           <h1 className="mb-1">Secure, Investigate, Resolve</h1>
           <p className="mb-5 hero-subtitle">
-            Protect your enterprise from inside and outside threats with our Nex-Gen cybersecurity platform.
+            Protecting the Digital Realm and uncovering cyber threats.
           </p>
         </div>
 
