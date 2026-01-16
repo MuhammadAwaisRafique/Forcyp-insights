@@ -1,0 +1,537 @@
+/* ============================================
+   3D PARALLAX BACKGROUND CONTAINER
+   ============================================ */
+.parallax-3d-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1200px;
+  perspective-origin: center center;
+  background: #000000;
+  isolation: isolate;
+}
+
+/* ============================================
+   PARALLAX LAYERS - 3D Depth System
+   ============================================ */
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Base Layer - Static background */
+.layer-base {
+  background: 
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(56, 3, 87, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 100% at 50% 100%, rgba(108, 0, 120, 0.12) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* Layer 1 - Deepest (furthest from viewer) */
+.layer-1 {
+  transform: translateZ(-800px) scale(2);
+  z-index: 1;
+  /* Slowest movement - creates depth */
+  animation: layer1Float 40s ease-in-out infinite;
+}
+
+/* Layer 2 - Mid depth */
+.layer-2 {
+  transform: translateZ(-400px) scale(1.5);
+  z-index: 2;
+  /* Medium speed movement */
+  animation: layer2Float 30s ease-in-out infinite;
+}
+
+/* Layer 3 - Foreground (closest to viewer) */
+.layer-3 {
+  transform: translateZ(-200px) scale(1.2);
+  z-index: 3;
+  /* Fastest movement - most responsive */
+  animation: layer3Float 25s ease-in-out infinite;
+}
+
+/* Glow Layer - Ambient effects */
+.layer-glow {
+  background: 
+    radial-gradient(ellipse 60% 40% at 30% 20%, rgba(108, 0, 120, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 70% 80%, rgba(56, 3, 87, 0.06) 0%, transparent 60%);
+  z-index: 4;
+  animation: glowPulse 20s ease-in-out infinite;
+  mix-blend-mode: plus-lighter;
+}
+
+/* ============================================
+   MOUSE PARALLAX EFFECTS
+   ============================================ */
+.parallax-3d-container:hover .layer-1 {
+  transform: translateZ(-800px) scale(2) 
+    translateX(calc(var(--mouse-x) * 20px)) 
+    translateY(calc(var(--mouse-y) * 20px))
+    rotateX(calc(var(--mouse-y) * 2deg))
+    rotateY(calc(var(--mouse-x) * 2deg));
+  transition: transform 0.3s ease-out;
+}
+
+.parallax-3d-container:hover .layer-2 {
+  transform: translateZ(-400px) scale(1.5)
+    translateX(calc(var(--mouse-x) * 40px))
+    translateY(calc(var(--mouse-y) * 40px))
+    rotateX(calc(var(--mouse-y) * 3deg))
+    rotateY(calc(var(--mouse-x) * 3deg));
+  transition: transform 0.3s ease-out;
+}
+
+.parallax-3d-container:hover .layer-3 {
+  transform: translateZ(-200px) scale(1.2)
+    translateX(calc(var(--mouse-x) * 60px))
+    translateY(calc(var(--mouse-y) * 60px))
+    rotateX(calc(var(--mouse-y) * 4deg))
+    rotateY(calc(var(--mouse-x) * 4deg));
+  transition: transform 0.3s ease-out;
+}
+
+/* ============================================
+   ABSTRACT SHAPES - Blurred Circles
+   ============================================ */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Deep Layer Shapes (Layer 1) - Largest, slowest */
+.shape-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(108, 0, 120, 0.5) 0%,
+    rgba(108, 0, 120, 0.2) 50%,
+    transparent 70%
+  );
+  top: 10%;
+  left: 10%;
+  animation: shapeFloat1 35s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-2 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle at 70% 30%,
+    rgba(56, 3, 87, 0.5) 0%,
+    rgba(56, 3, 87, 0.2) 50%,
+    transparent 70%
+  );
+  top: 50%;
+  right: 10%;
+  animation: shapeFloat2 40s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-3 {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(108, 0, 120, 0.4) 0%,
+    rgba(56, 3, 87, 0.2) 50%,
+    transparent 70%
+  );
+  bottom: 15%;
+  left: 30%;
+  animation: shapeFloat3 38s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+/* Mid Layer Shapes (Layer 2) - Medium size, medium speed */
+.shape-4 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(108, 0, 120, 0.45) 0%,
+    rgba(108, 0, 120, 0.15) 50%,
+    transparent 70%
+  );
+  top: 20%;
+  left: 60%;
+  animation: shapeFloat4 28s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-5 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle at 60% 60%,
+    rgba(56, 3, 87, 0.45) 0%,
+    rgba(56, 3, 87, 0.15) 50%,
+    transparent 70%
+  );
+  top: 60%;
+  left: 20%;
+  animation: shapeFloat5 32s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-6 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(108, 0, 120, 0.4) 0%,
+    rgba(108, 0, 120, 0.1) 50%,
+    transparent 70%
+  );
+  bottom: 25%;
+  right: 25%;
+  animation: shapeFloat6 30s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-7 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(
+    circle at 30% 70%,
+    rgba(56, 3, 87, 0.4) 0%,
+    rgba(108, 0, 120, 0.15) 50%,
+    transparent 70%
+  );
+  top: 35%;
+  right: 30%;
+  animation: shapeFloat7 26s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+/* Foreground Shapes (Layer 3) - Smallest, fastest */
+.shape-8 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(108, 0, 120, 0.4) 0%,
+    rgba(108, 0, 120, 0.1) 50%,
+    transparent 70%
+  );
+  top: 15%;
+  left: 40%;
+  animation: shapeFloat8 22s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-9 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(
+    circle at 60% 40%,
+    rgba(56, 3, 87, 0.4) 0%,
+    rgba(56, 3, 87, 0.1) 50%,
+    transparent 70%
+  );
+  bottom: 20%;
+  left: 50%;
+  animation: shapeFloat9 24s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+.shape-10 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle at 40% 60%,
+    rgba(108, 0, 120, 0.35) 0%,
+    rgba(56, 3, 87, 0.1) 50%,
+    transparent 70%
+  );
+  top: 45%;
+  right: 20%;
+  animation: shapeFloat10 20s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+/* ============================================
+   LAYER FLOATING ANIMATIONS
+   ============================================ */
+@keyframes layer1Float {
+  0%, 100% {
+    transform: translateZ(-800px) scale(2) translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(-800px) scale(2) translate(30px, -40px) rotate(1deg);
+  }
+  50% {
+    transform: translateZ(-800px) scale(2) translate(-20px, 30px) rotate(-1deg);
+  }
+  75% {
+    transform: translateZ(-800px) scale(2) translate(25px, 35px) rotate(0.5deg);
+  }
+}
+
+@keyframes layer2Float {
+  0%, 100% {
+    transform: translateZ(-400px) scale(1.5) translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translateZ(-400px) scale(1.5) translate(-35px, 45px) rotate(-1.5deg);
+  }
+  66% {
+    transform: translateZ(-400px) scale(1.5) translate(40px, -30px) rotate(1.5deg);
+  }
+}
+
+@keyframes layer3Float {
+  0%, 100% {
+    transform: translateZ(-200px) scale(1.2) translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(-200px) scale(1.2) translate(45px, -50px) rotate(2deg);
+  }
+  50% {
+    transform: translateZ(-200px) scale(1.2) translate(-35px, 40px) rotate(-2deg);
+  }
+  75% {
+    transform: translateZ(-200px) scale(1.2) translate(30px, 50px) rotate(1deg);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ============================================
+   SHAPE FLOATING ANIMATIONS
+   ============================================ */
+@keyframes shapeFloat1 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(0) translate(50px, -60px) scale(1.1) rotate(90deg);
+  }
+  50% {
+    transform: translateZ(0) translate(-40px, 50px) scale(0.9) rotate(180deg);
+  }
+  75% {
+    transform: translateZ(0) translate(45px, 55px) scale(1.05) rotate(270deg);
+  }
+}
+
+@keyframes shapeFloat2 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translateZ(0) translate(-60px, 70px) scale(1.15) rotate(120deg);
+  }
+  66% {
+    transform: translateZ(0) translate(55px, -45px) scale(0.85) rotate(240deg);
+  }
+}
+
+@keyframes shapeFloat3 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(0) translate(55px, 65px) scale(1.08) rotate(-90deg);
+  }
+  50% {
+    transform: translateZ(0) translate(-50px, -40px) scale(0.92) rotate(-180deg);
+  }
+  75% {
+    transform: translateZ(0) translate(40px, -60px) scale(1.04) rotate(-270deg);
+  }
+}
+
+@keyframes shapeFloat4 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translateZ(0) translate(-45px, 55px) scale(1.12) rotate(108deg);
+  }
+  60% {
+    transform: translateZ(0) translate(50px, -50px) scale(0.88) rotate(216deg);
+  }
+}
+
+@keyframes shapeFloat5 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  40% {
+    transform: translateZ(0) translate(60px, -70px) scale(1.1) rotate(144deg);
+  }
+  80% {
+    transform: translateZ(0) translate(-45px, 50px) scale(0.9) rotate(288deg);
+  }
+}
+
+@keyframes shapeFloat6 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(0) translate(40px, 50px) scale(1.06) rotate(72deg);
+  }
+  50% {
+    transform: translateZ(0) translate(-35px, -45px) scale(0.94) rotate(144deg);
+  }
+  75% {
+    transform: translateZ(0) translate(45px, -40px) scale(1.03) rotate(216deg);
+  }
+}
+
+@keyframes shapeFloat7 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  35% {
+    transform: translateZ(0) translate(-50px, 60px) scale(1.14) rotate(126deg);
+  }
+  70% {
+    transform: translateZ(0) translate(55px, -55px) scale(0.86) rotate(252deg);
+  }
+}
+
+@keyframes shapeFloat8 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(0) translate(35px, -45px) scale(1.08) rotate(90deg);
+  }
+  50% {
+    transform: translateZ(0) translate(-30px, 40px) scale(0.92) rotate(180deg);
+  }
+  75% {
+    transform: translateZ(0) translate(40px, 45px) scale(1.04) rotate(270deg);
+  }
+}
+
+@keyframes shapeFloat9 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translateZ(0) translate(-40px, 50px) scale(1.1) rotate(108deg);
+  }
+  60% {
+    transform: translateZ(0) translate(45px, -40px) scale(0.9) rotate(216deg);
+  }
+}
+
+@keyframes shapeFloat10 {
+  0%, 100% {
+    transform: translateZ(0) translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translateZ(0) translate(30px, -35px) scale(1.06) rotate(72deg);
+  }
+  50% {
+    transform: translateZ(0) translate(-25px, 35px) scale(0.94) rotate(144deg);
+  }
+  75% {
+    transform: translateZ(0) translate(35px, 30px) scale(1.02) rotate(216deg);
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+.parallax-3d-container * {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-3d-container * {
+    animation: none !important;
+  }
+  
+  .parallax-3d-container:hover .layer-1,
+  .parallax-3d-container:hover .layer-2,
+  .parallax-3d-container:hover .layer-3 {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+  .shape {
+    filter: blur(60px);
+  }
+  
+  .shape-1, .shape-2, .shape-3 {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .shape-4, .shape-5, .shape-6, .shape-7 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .shape-8, .shape-9, .shape-10 {
+    width: 250px;
+    height: 250px;
+  }
+  
+  /* Reduce parallax intensity on mobile */
+  .parallax-3d-container:hover .layer-1 {
+    transform: translateZ(-800px) scale(2) 
+      translateX(calc(var(--mouse-x) * 10px)) 
+      translateY(calc(var(--mouse-y) * 10px));
+  }
+  
+  .parallax-3d-container:hover .layer-2 {
+    transform: translateZ(-400px) scale(1.5)
+      translateX(calc(var(--mouse-x) * 20px))
+      translateY(calc(var(--mouse-y) * 20px));
+  }
+  
+  .parallax-3d-container:hover .layer-3 {
+    transform: translateZ(-200px) scale(1.2)
+      translateX(calc(var(--mouse-x) * 30px))
+      translateY(calc(var(--mouse-y) * 30px));
+  }
+}
+
+@media (max-width: 480px) {
+  .shape {
+    opacity: 0.25;
+  }
+  
+  .layer-glow {
+    opacity: 0.5;
+  }
+}
+
