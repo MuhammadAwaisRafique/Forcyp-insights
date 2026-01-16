@@ -153,7 +153,7 @@ const PrivacyPolicyModal = ({ isOpen, onClose }) => {
                     <strong>Email:</strong> <a href="mailto:Support@forcyp.com">Support@forcyp.com</a>
                   </p>
                   <p>
-                    <strong>Phone:</strong> <a href="tel:+923001234567">+92 300 1234567</a>
+                    <strong>Phone:</strong> <a href="tel:+15513255677">+1 (551) 325-5677</a> | <a href="tel:+923558753346">+92 355 8753346</a>
                   </p>
                   <p>
                     <strong>Location:</strong> Islamabad, Pakistan

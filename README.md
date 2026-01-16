@@ -247,7 +247,7 @@ This project is private and proprietary. All rights reserved.
 ## 👥 Contact
 
 - **Email**: Support@forcyp.com
-- **Phone**: +92 300 1234567
+- **Phone**: +1 (551) 325-5677 | +92 355 8753346
 - **Location**: Islamabad, Pakistan
 - **Office Hours**: Mon-Fri 9AM-6PM PKT
 

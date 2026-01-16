@@ -76,6 +76,10 @@ const Footer = ({ onContactClick, onTrialClick, onPrivacyClick }) => {
                     <li><a href="#services">App Development</a></li>
                     <li><a href="#services">SEO & Digital Marketing</a></li>
                     <li><a href="#services">2D Animation & Graphics</a></li>
+                    <li><a href="#services">VAPT Testing</a></li>
+                    <li><a href="#services">Brand Protection</a></li>
+                    <li><a href="#services">Identity Protection</a></li>
+                    <li><a href="#services">PVT Intelligence</a></li>
                   </ul>
                 </div>
 

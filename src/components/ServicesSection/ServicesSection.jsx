@@ -99,6 +99,34 @@ const ServicesSection = () => {
       brief: 'Creative visual content and animations that bring your brand to life',
       icon: 'palette',
       color: 'green'
+    },
+    {
+      id: 11,
+      title: 'VAPT (Vulnerability & Penetration Testing)',
+      brief: 'Comprehensive security assessments to identify and remediate vulnerabilities before attackers exploit them',
+      icon: 'bug',
+      color: 'cyan'
+    },
+    {
+      id: 12,
+      title: 'Brand Protection',
+      brief: 'Safeguard your brand reputation and intellectual property from online threats and impersonation',
+      icon: 'lock',
+      color: 'green'
+    },
+    {
+      id: 13,
+      title: 'Identity Protection',
+      brief: 'Advanced solutions to protect personal and corporate identities from theft, fraud, and misuse',
+      icon: 'user-shield',
+      color: 'cyan'
+    },
+    {
+      id: 14,
+      title: 'PVT Intelligence Services',
+      brief: 'Private intelligence gathering and analysis services for strategic business and security decisions',
+      icon: 'eye',
+      color: 'green'
     }
   ]
 
@@ -190,6 +218,40 @@ const ServicesSection = () => {
             <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
             <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
             <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+          </svg>
+        )
+      case 'bug':
+        return (
+          <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+            <path d="M7.05 7.05l2.83 2.83M14.12 14.12l2.83 2.83M7.05 16.95l2.83-2.83M14.12 9.88l2.83-2.83"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        )
+      case 'lock':
+        return (
+          <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M12 8v4M9 12h6"/>
+            <circle cx="12" cy="10" r="1" fill="currentColor"/>
+          </svg>
+        )
+      case 'user-shield':
+        return (
+          <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 12c0-1.1-.9-2-2-2h-2M20 12c0 1.1-.9 2-2 2h-2M20 12v6M20 12h-4"/>
+            <path d="M16 12h4v6h-4z"/>
+          </svg>
+        )
+      case 'eye':
+        return (
+          <svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M17 8l-5 5M7 8l5 5"/>
           </svg>
         )
       default:

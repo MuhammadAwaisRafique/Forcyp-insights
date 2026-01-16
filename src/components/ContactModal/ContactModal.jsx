@@ -50,7 +50,11 @@ const ContactModal = ({ isOpen, onClose }) => {
     'Web Development',
     'App Development',
     'SEO & Digital Marketing',
-    '2D Animation & Graphics Designing'
+    '2D Animation & Graphics Designing',
+    'VAPT (Vulnerability & Penetration Testing)',
+    'Brand Protection',
+    'Identity Protection',
+    'PVT Intelligence Services'
   ]
 
   // Email validation regex
@@ -393,8 +397,13 @@ const ContactModal = ({ isOpen, onClose }) => {
               </a>
             </p>
             <p>
-              <a className="opacity-7" href="tel:+923001234567">
-                +92 300 1234567
+              <a className="opacity-7" href="tel:+15513255677">
+                +1 (551) 325-5677
+              </a>
+            </p>
+            <p>
+              <a className="opacity-7" href="tel:+923558753346">
+                +92 355 8753346
               </a>
             </p>
           </div>

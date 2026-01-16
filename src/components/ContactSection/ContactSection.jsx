@@ -36,7 +36,11 @@ const ContactSection = () => {
     'Web Development',
     'App Development',
     'SEO & Digital Marketing',
-    '2D Animation & Graphics Designing'
+    '2D Animation & Graphics Designing',
+    'VAPT (Vulnerability & Penetration Testing)',
+    'Brand Protection',
+    'Identity Protection',
+    'PVT Intelligence Services'
   ]
 
   // Email validation regex
@@ -389,8 +393,8 @@ const ContactSection = () => {
                 </div>
                 <div className="detail-content">
                   <h4>Phone</h4>
-                  <p>+92 300 1234567</p>
-                  <p>+92 51 1234567</p>
+                  <p>+1 (551) 325-5677</p>
+                  <p>+92 355 8753346</p>
                 </div>
               </div>
 
@@ -461,7 +465,7 @@ const ContactSection = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     onBlur={(e) => validateField('phone', e.target.value)}
-                    placeholder="+92 300 1234567"
+                    placeholder="+1 (551) 325-5677"
                     className={errors.phone ? 'error' : ''}
                     disabled={isSubmitting}
                   />
