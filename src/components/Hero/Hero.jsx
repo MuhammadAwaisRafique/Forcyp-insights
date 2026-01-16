@@ -23,7 +23,7 @@ const Hero = () => {
             <a href="#idp" className="card-link me">
               <div className="card-glow"></div>
               <span className="card-link-type">FOR INDIVIDUALS</span>
-              <span className="card-link-title">Protect Me</span>
+              <span className="card-link-title">Secure Yourself</span>
               <span className="card-link-button">
                 <svg className="icon" width="20" height="20" viewBox="0 0 24 24">
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" fill="currentColor"/>
@@ -35,7 +35,7 @@ const Hero = () => {
             <a href="#cybersecurity_services" className="card-link company anchor">
               <div className="card-glow"></div>
               <span className="card-link-type">FOR ENTERPRISE</span>
-              <span className="card-link-title">Protect My Company</span>
+              <span className="card-link-title">Secure Your Company</span>
               <span className="card-link-button">
                 <svg className="icon" width="20" height="20" viewBox="0 0 24 24">
                   <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" fill="currentColor"/>
